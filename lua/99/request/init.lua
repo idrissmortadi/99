@@ -46,7 +46,8 @@ function OpenCodeProvider:make_request(query, request, observer)
     observer.on_complete(status, text)
   end)
 
-  local command = { "opencode", "run", "-m", request.context.model, query }
+  local command =
+    { "opencode", "--agent", "99", "run", "-m", request.context.model, query }
   logger:debug("make_request", "command", command)
   local proc = vim.system(
     command,
